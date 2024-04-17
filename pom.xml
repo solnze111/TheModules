@@ -4,7 +4,7 @@
 
     <groupId>com.ee</groupId>
     <artifactId>TheModules</artifactId>
-    <version>1.0.1</version>
+    <version>1.0</version>
     <packaging>pom</packaging>
 
     <modules>
@@ -115,7 +115,6 @@
         <developerConnection>scm:git:git@github.com:Milovanie/TheModules.git</developerConnection>
       <tag>TheModules-1.0</tag>
   </scm>
-
 
     <!--example superPOM --> <!-- --> <!-- --> <!-- --> <!-- -->
     <build>
