@@ -113,7 +113,7 @@
     <scm>
         <connection>scm:git:git@github.com:Milovanie/TheModules.git</connection>
         <developerConnection>scm:git:git@github.com:Milovanie/TheModules.git</developerConnection>
-      <tag>TheModules-1.0</tag>
+      <tag>TheModulesE-1.0</tag>
   </scm>
 
     <!--example superPOM --> <!-- --> <!-- --> <!-- --> <!-- -->
