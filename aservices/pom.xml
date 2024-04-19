@@ -4,11 +4,11 @@
     <parent>
         <groupId>com.ee</groupId>
         <artifactId>TheModules</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
 
     <artifactId>aservices</artifactId>
-  <version>1.1</version>
+  <version>1.2-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.ee</groupId>
             <artifactId>database</artifactId>
-            <version>1.1</version>
+            <version>1.2-SNAPSHOT</version>
             <scope>compile</scope>
         </dependency>
         <dependency>
