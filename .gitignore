@@ -11,6 +11,8 @@ target/
 *.iws
 *.iml
 *.ipr
+# Игнорировать временные файлы релиза Maven
+pom.xml.releaseBackup
 
 ### Eclipse ###
 .apt_generated
