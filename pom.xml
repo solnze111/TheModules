@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.ee</groupId>
@@ -29,100 +30,70 @@
         <spring.version>6.1.6</spring.version>
         <app.env>dev</app.env>
     </properties>
-
-    <profiles>
-        <profile>
-            <id>prod</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-                <os><family>windows</family></os>
-                <jdk>15</jdk>
-                <file><exists>${basedir}/pom.xml</exists></file>
-                <property>
-                    <name>tes.prop</name>
-                    <value>example</value>
-                </property>
-            </activation>
-            <properties>
-                <app.env>prod</app.env>
-                <example>test-test</example>
-            </properties>
-
-            <build>
-                <plugins>
-                <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                    <configuration>
-                        <debug>false</debug>
-                        <optimize>true</optimize>
-                    <!-- no debug in production  -->
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    </configuration>
-                </plugin>
-                </plugins>
-            </build>
-        </profile>
-
-    </profiles>
-
+    <distributionManagement>
+        <repository>
+            <id>mynexus</id>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <!-- all in dependencyManagement do not direct overidde in other modules-->
     <!-- if you need one of them, just copy to your module pom.xml without version and scope-->
     <dependencyManagement>
-    <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aop</artifactId>
-            <version>${spring.version}</version>
-        </dependency>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/org.springframework/spring-aop -->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
 
 
-        <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
-        <dependency>
-            <groupId>jakarta.servlet</groupId>
-            <artifactId>jakarta.servlet-api</artifactId>
-            <version>6.1.0-M2</version>
-            <scope>provided</scope>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
-        <dependency>
-            <groupId>org.postgresql</groupId>
-            <artifactId>postgresql</artifactId>
-            <version>42.7.3</version>
-        </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.10.2</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.26</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
+            <!-- https://mvnrepository.com/artifact/jakarta.servlet/jakarta.servlet-api -->
+            <dependency>
+                <groupId>jakarta.servlet</groupId>
+                <artifactId>jakarta.servlet-api</artifactId>
+                <version>6.1.0-M2</version>
+                <scope>provided</scope>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+            <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>42.7.3</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-api</artifactId>
+                <version>5.10.2</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.26</version>
+                <scope>compile</scope>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:Milovanie/TheModules.git</connection>
-        <developerConnection>scm:git:git@github.com:Milovanie/TheModules.git</developerConnection>
-      <tag>TheModulesF-1.0</tag>
-  </scm>
+        <connection>scm:git:git@github.com:solnze111/TheModules.git</connection>
+        <developerConnection>scm:git:git@github.com:solnze111/TheModules.git</developerConnection>
+    </scm>
 
     <!--example superPOM --> <!-- --> <!-- --> <!-- --> <!-- -->
     <build>
         <resources>
-          <resource>
-              <directory>${project.basedir}/src/main/resources</directory>
-              <filtering>true</filtering>
-          </resource>
+            <resource>
+                <directory>${project.basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
         </resources>
         <!--final name will be in every module, don't use it here -->
         <!--  <finalName>ROOTMODULES</finalName> -->
@@ -141,53 +112,48 @@
                 <configuration>
                     <!-- tag: default : our artifactId-version -->
                     <!-- All dependencies can NOT be SNAPSHOT !!! -->
+                    <arguments>-DignoreSnapshots=true</arguments>
                 </configuration>
             </plugin>
         </plugins>
-
-
 
         <pluginManagement>
             <!-- here plugin will see only overridden in project where need one of plugins from here -->
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.13.0</version>
-                <configuration>
-                    <!-- put your configurations here -->
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                            <version>1.18.28</version>
-                        </path>
-
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.13.0</version>
+                    <configuration>
+                        <!-- put your configurations here -->
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                        <annotationProcessorPaths>
+                            <path>
+                                <groupId>org.projectlombok</groupId>
+                                <artifactId>lombok</artifactId>
+                                <version>1.18.28</version>
+                            </path>
+                        </annotationProcessorPaths>
+                    </configuration>
+                </plugin>
 
 
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.2.5</version>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>integration-test</goal>
-                            <goal>verify</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-</pluginManagement>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>3.2.5</version>
+                    <executions>
+                        <execution>
+                            <goals>
+                                <goal>integration-test</goal>
+                                <goal>verify</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
-
-
 
 </project>
