@@ -27,8 +27,10 @@
         <org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
         <version.mapstruct-lombok>0.2.0</version.mapstruct-lombok>
         <spring.version>6.1.6</spring.version>
-        <app.env>dev</app.env>
+
     </properties>
+
+
     <distributionManagement>
         <repository>
             <id>mynexus</id>
@@ -84,7 +86,6 @@
     <scm>
         <connection>scm:git:git@github.com:solnze111/TheModules.git</connection>
         <developerConnection>scm:git:git@github.com:solnze111/TheModules.git</developerConnection>
-        <tag>HEAD</tag>
     </scm>
 
     <!--example superPOM --> <!-- --> <!-- --> <!-- --> <!-- -->
