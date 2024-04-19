@@ -85,6 +85,7 @@
     <scm>
         <connection>scm:git:git@github.com:solnze111/TheModules.git</connection>
         <developerConnection>scm:git:git@github.com:solnze111/TheModules.git</developerConnection>
+        <tag>HEAD</tag>
     </scm>
 
     <!--example superPOM --> <!-- --> <!-- --> <!-- --> <!-- -->
